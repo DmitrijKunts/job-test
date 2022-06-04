@@ -17,9 +17,7 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
             <div class="mt-2 inline-flex rounded-md shadow-sm" role="group">
-                <button
-                    onclick="var copyText=document.getElementById('home_link');navigator.clipboard.writeText(copyText.value);"
-                    type="button"
+                <button onclick="copyLinkToBuffer()" type="button"
                     class="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                     Копировать
                 </button>
@@ -53,30 +51,12 @@
             <div class="mb-2 inline-flex rounded-md shadow-sm" role="group">
 
 
-                <button onclick="fetch('{{ route('lucky.gen', $user) }}')
-                                                .then((response) => {
-                                                  return response.json();
-                                                })
-                                                .then((data) => {
-                                                    document.getElementById('points').textContent = data.points;
-                                                    document.getElementById('win_lose').textContent = data.win_lose;
-                                                    document.getElementById('win_summ').textContent = data.win_summ;
-                                                });" type="button"
+                <button onclick="luckyGen('{{ route('lucky.gen', $user) }}')" type="button"
                     class="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                     Im feeling lucky
                 </button>
 
-                <button onclick="fetch('{{ route('lucky.history', $user) }}')
-                                            .then((response) => {
-                                              return response.json();
-                                            })
-                                            .then((data) => {
-                                                var res = '';
-                                                data.forEach(function(data) {
-                                                    res += 'Очков: '+ data.points +', Win/Lose: '+ data.win_lose +', Сумма: '+ data.win_summ +'<br>';
-                                                });
-                                                document.getElementById('history').innerHTML = res;
-                                            });" type="button"
+                <button onclick="luckyHistory('{{ route('lucky.history', $user) }}')" type="button"
                     class="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                     History
                 </button>

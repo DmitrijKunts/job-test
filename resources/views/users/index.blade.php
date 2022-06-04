@@ -20,6 +20,9 @@
                         Телефон
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Ссылка
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Действия
                     </th>
                 </tr>
@@ -32,6 +35,10 @@
                         </th>
                         <td class="px-6 py-4">
                             {{ $user->phone }}
+                        </td>
+                        <td class="px-6 py-4">
+                            <a target="_blank"
+                                href="{{ route('home_link', $user) }}">{{ route('home_link', $user) }}</a>
                         </td>
                         <td class="px-6 py-4">
 

@@ -2197,6 +2197,41 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/home_page.js":
+/*!***********************************!*\
+  !*** ./resources/js/home_page.js ***!
+  \***********************************/
+/***/ (() => {
+
+copyLinkToBuffer = function copyLinkToBuffer() {
+  var copyText = document.getElementById('home_link');
+  navigator.clipboard.writeText(copyText.value);
+};
+
+luckyGen = function luckyGen($url) {
+  fetch($url).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    document.getElementById('points').textContent = data.points;
+    document.getElementById('win_lose').textContent = data.win_lose;
+    document.getElementById('win_summ').textContent = data.win_summ;
+  });
+};
+
+luckyHistory = function luckyHistory($url) {
+  fetch($url).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    var res = '';
+    data.forEach(function (data) {
+      res += 'Очков: ' + data.points + ', Win/Lose: ' + data.win_lose + ', Сумма: ' + data.win_summ + '<br>';
+    });
+    document.getElementById('history').innerHTML = res;
+  });
+};
+
+/***/ }),
+
 /***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
@@ -19778,6 +19813,7 @@ process.umask = function() { return 0; };
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/home_page.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

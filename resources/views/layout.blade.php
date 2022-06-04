@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CASINO</title>
     <link href="/css/app.css" rel="stylesheet">
+    <script src="/js/app.js"></script>
 </head>
 
 <body>
